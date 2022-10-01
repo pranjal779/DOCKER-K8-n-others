@@ -1,0 +1,511 @@
+follow for instruction: - https://www.youtube.com/watch?v=iJeL2tOFfvM&t=1210s&ab_channel=edureka%21
+
+
+for windows powershell or cmd
+
+docker --version
+docker run hello-world (most basic cmmd)
+
+docker images
+
+docker pull {ubuntu} or any image you want
+
+
+docker run -it -d ubuntu
+
+docker ps -a
+
+docker exec it (container ID) bash
+vim will open in the terminal
+
+docker stop <container ID>
+
+docker commit <contain ID> <dockerUserProfilename>/<Imagename> [eg:(p779/ubuntu)]
+                        -> <dockerhubRepoName>/<NameOfImage>
+
+docker images
+
+docker login 
+{if used the commit cmd without login, docker will ask you to login}
+
+docker push <DockerhubRepoName>/<ImageName>
+
+docker rm <containerID>
+
+docker ps -a [to find Container] {Process Status, so docker ps basically shows all of the Docker processes actively running.}
+
+[to remove a image]
+docker images [shows all images]
+
+docker rmi <ImageID>
+
+and you need to have
+
+webapplication file
+requirement file
+
+Compulsory files: -
+Dockerfile
+Dockercomposefile
+
+(cmd)
+docker-compose up 
+
+**file name should be similar
+for docker-compose.yml file
+and give extra care for file name**
+
+
+# to check the last exited container
+docker ps -l
+
+export FORMAT="ID\t{{.ID}}\nNAME\t{{.Names}}\nIMAGE\t{{.Image}}\nPORTS\t{{.Ports}}\nCOMMAND\t{{.Command}}\nCREATED\t{{.CreatedAt}}\nSTATUS\t{{.Status}}\n"
+
+docker ps -l --format=$FORMAT (for mac) or use in gitbash
+
+# to see all stopped container
+docker ps -a
+
+docker run -ti ubuntu:latest bash
+
+docker commit <containerID>
+# creates a image id
+
+example for giving a tag:
+C:\WINDOWS\system32>docker commit df8ef77d00b3
+sha256:52736a913c884cc24c0be61eacef17eea94eebfd_______cf35ab6bc6b8de1f3
+
+C:\WINDOWS\system32>docker tag 52736a913c884cc24c0be61eacef17eea94eebf__________5ab6bc6b8de1f3 my-image
+
+docker images
+C:\WINDOWS\system32>docker images
+REPOSITORY    TAG       IMAGE ID       CREATED         SIZE
+my-image      latest    52736a913c88   4 minutes ago   77.8MB
+
+C:\WINDOWS\system32>docker run -ti my-image bash
+root@18baf38c65a8:/# ls
+
+# you will see your file
+
+---use this---
+docker commit  objective_bhabha my-image-2
+
+docker images
+
+docker run --rm -ti ubuntu sleep 5
+
+docker run -ti ubuntu bash -c "sleep 3; echo all done"
+
+docker run -d -ti ubuntu bash // -d will keep it running
+
+docker ps // or // docker ps --format..
+
+docker attach <NAMES>
+
+"detach and keep running ctrl + p, ctrl + q" - it exits you out of the container by detaching you from it, but leaves it running so that you can attach back again and pick up where you left off
+
+# in another cmd terminal
+C:\WINDOWS\system32>docker run -d -ti ubuntu bash 
+C:\WINDOWS\system32>docker exec -ti gallant_golick bash
+	# ls
+	# touch foo
+	# ls
+
+# in the original terminal/cmd
+C:\WINDOWS\system32>docker attach gallant_golick
+root@874bdb6c4c68:/#
+root@874bdb6c4c68:/# ls
+
+you will see foo
+
+pressing ctrl + d in # in another cmd terminal, the attached process in orignal died with the # another terminal/cmd container. 
+
+docker run --name example -d ubuntu bash -c "lose /etc/password"
+
+docker logs example
+bash: line 1: lose: command not found
+
+C:\WINDOWS\system32>docker run -ti ubuntu bash
+root@397fe94396f1:/#
+
+<2nd cmd>
+C:\WINDOWS\system32>docker ps
+
+C:\WINDOWS\system32>docker kill laughing_wilson
+laughing_wilson
+
+C:\WINDOWS\system32>docker kill sleepy_jemison
+sleepy_jemison
+
+C:\WINDOWS\system32>
+
+<1st cmd>
+"I got kicked out bash"
+C:\WINDOWS\system32>docker run -ti ubuntu bash
+root@397fe94396f1:/#
+C:\WINDOWS\system32>
+
+<2nd cmd>
+docker ps -l
+
+<1st cmd>
+C:\WINDOWS\system32>docker rm sleepy_jemison
+sleepy_jemison
+
+C:\WINDOWS\system32>docker run --rm -ti -p 45678:4578 -p 45679:45679 --name echo-server ubuntu:14.04 bash
+
+root@7af1a44678ae:/# nc -lp 45678 | nc -lp 45679
+
+since we don't have nc installed locally
+we can chose an image which have netcat (nc) instead
+
+docker run -rm -ti ubuntu:14.04 bash
+
+containers are not allowed to directly address by the container IP so they have added a special host name for the containers to refer to the machine that is hosting them.
+{
+C:\Users\prath>docker run --rm -ti ubuntu:14.04 bash (in the #1 client cmd)
+(it will start)
+root@59d277138537:/# nc host.docker.internal 45678
+ here we go again
+-----
+(in the #2 client cmd)
+C:\Users\prath>docker run --rm -ti ubuntu:14.04 bash
+root@04bc4391a12d:/#nc host.docker.internal 45679
+ here we go again (should return as it is listening to 45678) 
+
+<dont forget to start the container>
+}
+nc host.docker.internal <port number>
+
+
+windows step if no netcat:- 
+nc <ipaddress> <port number>
+hit ipconfig or ipconfig/all to find the ipaddress
+
+k8s example
+docker run --rm -ti -p 45678 -p 45679 --name echo-server ubuntu:14.04 bash
+(it runs)
+root....:/#nc -lp 45678 | nc -lp 45679
+
+(in the #1 client cmd)
+C:\Users\prath>docker port echo-server
+45679/tcp -> 0.0.0.0:#####
+45678/tcp -> 0.0.0.0:#####
+
+docker run --rm -ti ubuntu:14.04 bash (on respective client cmd to start the container)
+
+nc localhost ##### (in respective client cmd)
+ <any msg>
+
+ <any msg> will return in #2 client cmd or the listening port
+
+[but for me]
+
+nc host.docker.internal #####
+ does it goes? [worked] {in respective client cmd}
+
+{stop the containers in the desktop app for stopping????? use ctrl + c to stop}
+
+UDP/TCP
+C:\WINDOWS\system32>docker run --rm -ti -p 45678/udp --name echo-server ubuntu:14.04 bash
+
+{in the #1 client cmd}
+C:\WINDOWS\system32>docker port echo-server
+45678/udp -> 0.0.0.0:52314
+
+{in base cmd}
+root@b3a1a29c496b:/# nc -ulp 45678 (-ulp => u = udp, l = listening, p = port)
+{in windows have to start containers everytime}
+
+C:\WINDOWS\system32>docker run --rm -ti ubuntu:14.04 bash
+root@e39a463ad02b:/# nc -u <IP address of Ethernet adapter vEthernet (WSL)) #####
+ <any msg>
+
+ <anymsg> gets returned on base cmd
+
+------------
+
+container networking
+
+$ docker network ls
+
+C:\WINDOWS\system32>docker network create learning
+8b428d7f14fbc0c8c7ec99761f7ad1e60302ca7f099af_________b1f25dc138
+
+{in #2 cmd}
+C:\WINDOWS\system32>docker run --rm -ti --net learning --name catserver ubuntu:14.04 bash
+root@535ea3108182:/# ping catserver
+PING catserver (172.18.0.2) 56(84) bytes of data.
+64 bytes from 535ea3108182 (172.18.0.2): icmp_seq=1 ttl=64 time=0.089 ms
+64 bytes from 535ea3108182 (172.18.0.2): icmp_seq=2 ttl=64 time=0.061 ms
+64 bytes from 535ea3108182 (172.18.0.2): icmp_seq=3 ttl=64 time=0.163 ms
+(ctrl + c to stop)
+
+{in #3 cmd}
+C:\WINDOWS\system32>docker run --rm -ti --net learning --name dogserver ubuntu:14.04 bash
+root@5159fbed472e:/#
+
+{in #2 cmd}
+root@535ea3108182:/# ping dogserver
+PING dogserver (172.18.0.3) 56(84) bytes of data.
+64 bytes from dogserver.learning (172.18.0.3): icmp_seq=1 ttl=64 time=0.184 ms
+64 bytes from dogserver.learning (172.18.0.3): icmp_seq=2 ttl=64 time=0.104 ms
+^C
+--- dogserver ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 0.104/0.144/0.184/0.040 ms
+root@535ea3108182:/#
+
+{#3 cmd}
+root@5159fbed472e:/# nc -lp 12345
+ <any msg 1>
+ <any msg ->2>
+{#2 cmd}
+root@535ea3108182:/# nc dogserver 12345
+ <any msg ->1>
+ <any msg 2>
+(this is one network with 2 machines) -bruhhhh
+
+{create #4 cmd}
+{in #4 cmd}
+C:\WINDOWS\system32>docker network create catsonly
+6808cbf73defe4f571ab255c7006833b5eb5f7a97618f03eff9cff455d92e82a
+C:\WINDOWS\system32>docker network connect catsonly catserver
+
+{creating #5 cmd}
+C:\Users\prath>docker run --rm -ti --net catsonly --name bobcatserver ubuntu:14.04 bash
+root@c225bffb2459:/# ping catserver
+PING catserver (172.19.0.2) 56(84) bytes of data.
+64 bytes from catserver.catsonly (172.19.0.2): icmp_seq=1 ttl=64 time=0.494 ms
+^C
+--- catserver ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.494/0.494/0.494/0.000 ms
+root@c225bffb2459:/# ping dogserver
+^C
+root@c225bffb2459:/#
+
+--{#2 cmd}
+root@535ea3108182:/# ping dogserver
+PING dogserver (172.18.0.3) 56(84) bytes of data.
+64 bytes from dogserver.learning (172.18.0.3): icmp_seq=1 ttl=64 time=0.367 ms
+64 bytes from dogserver.learning (172.18.0.3): icmp_seq=2 ttl=64 time=0.633 ms
+^C
+--- dogserver ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1045ms
+rtt min/avg/max/mdev = 0.367/0.500/0.633/0.133 ms
+root@535ea3108182:/#
+root@535ea3108182:/# ping bobcatserver
+PING bobcatserver (172.19.0.3) 56(84) bytes of data.
+64 bytes from bobcatserver.catsonly (172.19.0.3): icmp_seq=1 ttl=64 time=0.242 ms
+^C
+--- bobcatserver ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.242/0.242/0.242/0.000 ms
+root@535ea3108182:/#
+
+--{#3 cmd}
+oot@5159fbed472e:/# ping catserver
+PING catserver (172.18.0.2) 56(84) bytes of data.
+64 bytes from catserver.learning (172.18.0.2): icmp_seq=1 ttl=64 time=0.225 ms
+64 bytes from catserver.learning (172.18.0.2): icmp_seq=2 ttl=64 time=0.105 ms
+^C
+--- catserver ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1054ms
+rtt min/avg/max/mdev = 0.105/0.165/0.225/0.060 ms
+root@5159fbed472e:/#
+oot@5159fbed472e:/# ping bobcatserver
+^C
+root@5159fbed472e:/#
+
+
+----------------
+LEGACY LINKING
+{#2 cmd after closing prev container}
+C:\WINDOWS\system32>docker run --rm -ti -e SECRET=theinternetlovescats --name catserver ubuntu:14.04 bash
+root@2c7749a15922:/#nc -lp 1234
+ <any msg 1>
+ <any msg ->2>
+(ctrl + c)
+root@2c7749a15922:/# nc dogserver 4321
+nc: getaddrinfo: Name or service not known
+root@2c7749a15922:/#
+(ctrl + c)
+root@2c7749a15922:/# env
+[you will see a bunch of info]
+
+{#3 cmd}
+C:\WINDOWS\system32>docker run --rm -ti --link catserver --name dogserver ubuntu:14.04 bash
+root@8770db1d0e83:/#
+ <any msg ->1>
+ <any msg 2>
+root@8770db1d0e83:/# nc -lp 4321
+root@8770db1d0e83:/# env 
+[same]
+-------------
+IMAGES
+docker ps -l --format=$FORMAT
+
+docker commit <ID> <imagename>
+
+docker commit <ID> <my-image-14:v2.1>
+
+another image is created but with v2.1 tag
+if you wont specify it it defaults to latest
+
+docker rmi <ID>
+docker rmi <Reposityname> (my-image)
+
+-----
+Volumes
+
+C:\Users\prath>cd Desktop
+
+C:\Users\prath\Desktop>mkdir example
+
+C:\Users\prath\Desktop>docker run -ti -v \Users\prath\Desktop\example:/shared-folder ubuntu bash
+docker: Error response from daemon: \Users\prath\Desktop\example%!(EXTRA string=is not a valid Windows path).
+See 'docker run --help'.
+(maybe should have started a container)
+
+C:\Users\prath\Desktop>docker run -ti -v C:\Users\prath\Desktop\example:/shared-folder ubuntu bash
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+2b55860d4c66: Pull complete
+Digest: sha256:20fa2d7bb4de7723f542be5923b06c4d704370f0390e4ae9e1c833c8785644c1
+Status: Downloaded newer image for ubuntu:latest
+root@fb676a80b68a:/# docker run -ti -v C:\Users\prath\Desktop\example:/shared-folder ubuntu bash
+bash: docker: command not found
+root@fb676a80b68a:/# ls
+bin   etc   lib32   media  proc  sbin           sys  var
+boot  home  lib64   mnt    root  shared-folder  tmp
+dev   lib   libx32  opt    run   srv            usr
+root@fb676a80b68a:/#
+root@fb676a80b68a:/# touch /shared-folder/my-data
+root@fb676a80b68a:/# ls /shared-folder
+my-data
+root@fb676a80b68a:/# exit
+exit
+
+C:\Users\prath\Desktop>ls example/
+'ls' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\prath\Desktop>ls example\
+'ls' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\prath\Desktop>cd example
+
+C:\Users\prath\Desktop\example>cd..
+
+C:\Users\prath\Desktop>dir example\
+ Volume in drive C is Windows-SSD
+ Volume Serial Number is 0023-EFFA
+
+ Directory of C:\Users\prath\Desktop\example
+
+09/26/2022  01:59 AM    <DIR>          .
+09/26/2022  01:59 AM    <DIR>          ..
+09/26/2022  01:59 AM                 0 my-data
+               1 File(s)              0 bytes
+               2 Dir(s)  373,651,345,408 bytes free
+
+C:\Users\prath\Desktop>
+
+{in #2 cmd}
+C:\WINDOWS\system32>docker run -ti -v /shared-data
+"docker run" requires at least 1 argument.
+See 'docker run --help'.
+
+Usage:  docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+Run a command in a new container
+
+C:\WINDOWS\system32>docker run --rm -ti ubuntu:14.04 bash
+root@3e06a2e56ef4:/# docker run -ti -v /shared-data
+bash: docker: command not found
+root@3e06a2e56ef4:/# exit
+exit
+
+C:\WINDOWS\system32>docker run -ti -v \shared-data
+"docker run" requires at least 1 argument.
+See 'docker run --help'.
+
+Usage:  docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+Run a command in a new container
+
+C:\WINDOWS\system32>docker run -ti -v /shared-data ubuntu bash
+root@735647e0cab5:/# echo hello > /shared-data/data-file
+root@735647e0cab5:/#
+
+{base cmd}
+C:\Users\prath\Desktop>docker ps -l
+CONTAINER ID   IMAGE     COMMAND   CREATED              STATUS              PORTS     NAMES
+735647e0cab5   ubuntu    "bash"    About a minute ago   Up About a minute             nifty_bartik
+
+C:\Users\prath\Desktop>docker run -ti --volumes-from nifty_bartik ubuntu bash
+root@392150bc1c32:/#
+
+{#2 cmd}
+exit
+
+{base}
+C:\Users\prath\Desktop>docker run -ti --volumes-from nifty_bartik ubuntu bash
+root@392150bc1c32:/# /shared-data/
+bash: /shared-data/: Is a directory
+root@392150bc1c32:/# ls /shared-data/
+data-file
+root@392150bc1c32:/# echo more > /shared-data
+bash: /shared-data: Is a directory
+root@392150bc1c32:/# echo more > /shared-data/more-data
+root@392150bc1c32:/# ls /shared-data/
+data-file  more-data
+root@392150bc1c32:/#
+
+{#2 cmd}
+C:\WINDOWS\system32>docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED         STATUS         PORTS     NAMES
+392150bc1c32   ubuntu    "bash"    3 minutes ago   Up 3 minutes             compassionate_poitras
+
+C:\WINDOWS\system32>docker run -ti --volumes from sionate_poitras
+unknown flag: --volumes
+See 'docker run --help'.
+
+C:\WINDOWS\system32>docker run -ti --volumes from compassionate_poitras
+unknown flag: --volumes
+See 'docker run --help'.
+
+C:\WINDOWS\system32>docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED         STATUS         PORTS     NAMES
+392150bc1c32   ubuntu    "bash"    5 minutes ago   Up 5 minutes             compassionate_poitras
+
+C:\WINDOWS\system32>docker run -ti --volumes from compassionate_poitras
+unknown flag: --volumes
+See 'docker run --help'.
+
+C:\WINDOWS\system32>docker run -ti --volumes-from compassionate_poitras
+"docker run" requires at least 1 argument.
+See 'docker run --help'.
+
+Usage:  docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+Run a command in a new container
+
+C:\WINDOWS\system32>docker run -ti --volumes-from compassionate_poitras ubuntu bash
+root@72b51eb01390:/# ls /shared-data/
+data-file  more-data
+root@72b51eb01390:/#
+
+but the data is is gone once exited from base and #2 cmd
+---------------------
+
+docker search ubuntu
+
+docker login
+-----
+image 161 context - Docker the program (chapter Under the hood)
+starting another container from a client within a container. Now this is not  Docker in Docker, this is a client within a Docker container controlling a server that's outside that container. this flexibility in where you control docker from is one of the key ides behind docker and has been a major contributor to its siccess and popularity.
+-----
+

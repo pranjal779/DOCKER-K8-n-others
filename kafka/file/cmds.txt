@@ -1,0 +1,12 @@
+multiple cmds will open when kafka in use
+
+everytime will have to navigate to kafka folder in C directory ?
+
+1)
+C:\kafka>.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+2)
+C:\kafka>.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+3)this is maybe an example of creating a kafka topic but with 1 replicant
+C:\kafka>.\bin\windows\kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic TestTopic

@@ -4,7 +4,7 @@ TechWorld with Nana 2 years ago](https://www.youtube.com/watch?v=s_o8dwzRlu4)
 ```
 k8> ls
 
-    Directory: C:\Users\prath\Desktop\shell scripting\k8
+    Directory: C:\.....\k8
 
 Mode                 LastWriteTime         Length Name
 ----                 -------------         ------ ----
@@ -16,7 +16,7 @@ d----           2/18/2024  6:45 PM                K8-Project
 
 k8> ls .\K8-Project\
 
-    Directory: C:\Users\prath\Desktop\shell scripting\k8\K8-Project
+    Directory: C:\.....\K8-Project
 
 Mode                 LastWriteTime         Length Name
 ----                 -------------         ------ ----

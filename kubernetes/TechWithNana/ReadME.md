@@ -1,7 +1,7 @@
 [Kubernetes Crash Course for Absolute Beginners [NEW]
 TechWorld with Nana 2 years ago](https://www.youtube.com/watch?v=s_o8dwzRlu4)
 
-
+```
 k8> ls
 
     Directory: C:\Users\prath\Desktop\shell scripting\k8
@@ -24,3 +24,4 @@ Mode                 LastWriteTime         Length Name
 -a---           2/19/2024  8:57 AM           1439 mongo-secret.yaml
 -a---           2/18/2024 11:28 PM           1649 mongo.yaml
 -a---           2/18/2024 11:30 PM           1452 webapp.yaml
+```

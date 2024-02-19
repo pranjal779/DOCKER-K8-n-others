@@ -1,0 +1,59 @@
+# Deployment & Service in 1 file, because they belong together.
+# Creating a Deployment:
+#  https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-deployment
+  labels:
+    app: mongo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo
+  template:
+    metadata:
+      labels:
+        app: mongo
+    spec:
+      containers:
+      - name: mongodb
+        image: mongo:5.0
+        ports:
+        - containerPort: 27017
+        env:
+        - name: MONGO_INITDB_ROOT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: mongo-user
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: mongo-password
+        resources:
+          limits:
+            cpu: "0.5"  # Adjust this value based on your application's needs
+            memory: "512Mi"  # Adjust this value based on your application's needs
+          requests:
+            cpu: "0.25"  # Adjust this value based on your application's needs
+            memory: "256Mi"  # Adjust this value based on your application's needs
+# seperate yaml unit or yaml section
+# services
+# every application needs a service in kubernetes
+# https://kubernetes.io/zh-cn/docs/concepts/services-networking/service/
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: monog-service
+spec:
+  selector:
+    app.kubernetes.io/name: mongo
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017

@@ -1,0 +1,11 @@
+# x s
+
+apiVersion: apps/v1
+kind: Deployment
+metdata:
+  name: nginx-deployment
+  labels:
+spec:
+  replicas: 2
+  selector:
+  template:

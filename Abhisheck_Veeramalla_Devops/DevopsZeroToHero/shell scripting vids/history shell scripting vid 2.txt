@@ -1,0 +1,506 @@
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                         27.377s   12:27:07 
+╰─ $ ./nodeHealth.sh
++ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+none            3.4G     0  3.4G   0% /usr/lib/modules/5.15.167.4-microsoft-standard-WSL2
+none            3.4G  4.0K  3.4G   1% /mnt/wsl
+drivers         931G  192G  740G  21% /usr/lib/wsl/drivers
+/dev/sdd       1007G  2.3G  954G   1% /
+none            3.4G   84K  3.4G   1% /mnt/wslg
+none            3.4G     0  3.4G   0% /usr/lib/wsl/lib
+rootfs          3.4G  2.2M  3.4G   1% /init
+none            3.4G  848K  3.4G   1% /run
+none            3.4G     0  3.4G   0% /run/lock
+snapfuse         56M   56M     0 100% /snap/aws-cli/1178
++ free -g
+               total        used        free      shared  buff/cache   available
+Mem:               6           0           5           0           0           5
+Swap:              2           0           2
++ nproc
+12
+
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella        31ms   12:27:10 
+╰─ $ cat nodeHealth.sh
+#!/bin/bash
+
+# this below box falls in beest practice
+# Also known as metadata information
+
+##########################################
+# Author: Pranjal                        #
+# Date: 01/25/2025                       #
+#                                        #
+# This script outputs the node health    #
+#                                        #
+# Version: v1                            #
+##########################################
+
+
+set -x # debug mode
+
+# echo "Print the disk space"
+df -h
+
+# echo "Print the memory"
+free -g
+
+# echo "Print the cpu"
+nproc
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                           23ms   12:52:35 
+╰─ $
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                           23ms   12:52:35 
+╰─ $ cat grantsPermission.sh
+#!/bin/bash
+
+###########################
+# Author: Pranjal
+# Date: 01/25/2025
+#
+# This script runs commands that give permission to files
+#
+#
+#############################
+
+
+chmod 777 nodeHealth.sh
+
+./nodeHealth.sh
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                           13ms   12:52:58 
+╰─ $
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                           10ms   12:59:20 
+╰─ $ ps
+    PID TTY          TIME CMD
+    397 pts/0    00:00:00 bash
+  17066 pts/0    00:00:00 ps
+
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                           10ms   13:08:47 
+╰─ $ ps -ef
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           1       0  0 12:01 ?        00:00:35 /sbin/init
+root           2       1  0 12:01 ?        00:00:00 /init
+root           6       2  0 12:01 ?        00:00:00 plan9 --control-socket 6 --log-level 4 --s
+root          38       1  0 12:01 ?        00:00:00 /lib/systemd/systemd-journald
+root          58       1  0 12:01 ?        00:00:00 /lib/systemd/systemd-udevd
+root          69       1  0 12:01 ?        00:00:00 snapfuse /var/lib/snapd/snaps/aws-cli_1174
+root          72       1  0 12:01 ?        00:00:00 snapfuse /var/lib/snapd/snaps/bare_5.snap
+root          73       1  0 12:01 ?        00:00:00 snapfuse /var/lib/snapd/snaps/core22_1380.
+root          81       1  0 12:01 ?        00:00:00 snapfuse /var/lib/snapd/snaps/core22_1722.
+root          91       1  0 12:01 ?        00:00:00 snapfuse /var/lib/snapd/snaps/gtk-common-t
+root          98       1  0 12:01 ?        00:00:00 snapfuse /var/lib/snapd/snaps/snapd_21759.
+root         103       1  0 12:01 ?        00:00:01 snapfuse /var/lib/snapd/snaps/snapd_23545.
+root         111       1  0 12:01 ?        00:00:00 snapfuse /var/lib/snapd/snaps/ubuntu-deskt
+root         112       1  0 12:01 ?        00:00:01 snapfuse /var/lib/snapd/snaps/ubuntu-deskt
+systemd+     168       1  0 12:01 ?        00:00:00 /lib/systemd/systemd-resolved
+root         218       1  0 12:01 ?        00:00:00 /usr/sbin/cron -f -P
+message+     220       1  0 12:01 ?        00:00:00 @dbus-daemon --system --address=systemd: -
+root         224       1  0 12:01 ?        00:00:00 /usr/bin/python3 /usr/bin/networkd-dispatc
+syslog       225       1  0 12:01 ?        00:00:00 /usr/sbin/rsyslogd -n -iNONE
+root         227       1  0 12:01 ?        00:00:02 /usr/lib/snapd/snapd
+root         228       1  0 12:01 ?        00:00:00 /lib/systemd/systemd-logind
+root         259       1  0 12:01 ?        00:00:00 /bin/bash /snap/ubuntu-desktop-installer/1
+root         261       1  0 12:01 ?        00:00:00 /usr/bin/python3 /usr/share/unattended-upg
+root         353     259  0 12:01 ?        00:00:05 /snap/ubuntu-desktop-installer/1286/usr/bi
+root         393       2  0 12:01 ?        00:00:00 /init
+root         394     393  0 12:01 ?        00:00:00 /init
+pran779      397     394  0 12:01 pts/0    00:00:00 -bash
+root         400       2  0 12:01 pts/1    00:00:00 /bin/login -f
+pran779      467       1  0 12:01 ?        00:00:00 /lib/systemd/systemd --user
+pran779      468     467  0 12:01 ?        00:00:00 (sd-pam)
+pran779      478     400  0 12:01 pts/1    00:00:00 -bash
+root         571     353  0 12:01 ?        00:00:20 python3 /snap/ubuntu-desktop-installer/128
+root         712       1  0 12:01 ?        00:00:00 snapfuse /var/lib/snapd/snaps/aws-cli_1178
+pran779    17249     397  0 13:08 pts/0    00:00:00 ps -ef
+
+
+
+
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                           11ms   13:13:31 
+╰─ $ ps -ef | grep "amazon"
+pran779    18437     397  0 13:13 pts/0    00:00:00 grep --color=auto amazon
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                           18ms   13:13:42 
+╰─ $
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                           18ms   13:13:42 
+╰─ $ ls
+ first-shell-script.sh
+ grantsPermission.sh
+'history shell scripting vid 2.txt'
+'history shellscripting vid 1.txt'
+ myfirstfolder
+ nodeHealth.sh
+ secondfile.sh
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                           43ms   13:27:26 
+╰─ $ vim test.sh
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                      1m 13.57s   13:28:54 
+╰─ $
+
+
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                      1m 13.57s   13:28:54 
+╰─ $ cat test.sh
+echo 1
+echo 11
+echo 17
+echo 46
+echo 77
+echo 55
+echo 99
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                           16ms   13:29:23 
+╰─ $
+
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                            9ms   13:29:39 
+╰─ $ # chmod 77 test.sh
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                            0ms   13:30:06 
+╰─ $ ./test.sh
+1
+11
+17
+46
+77
+55
+99
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                           26ms   13:30:19 
+╰─ $
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                           26ms   13:30:19 
+╰─ $ ./test.sh | grep 1
+1
+11
+17
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                           24ms   13:31:04 
+╰─ $
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                           17ms   13:31:37 
+╰─ $ date
+Sat Jan 25 13:36:31 IST 2025
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                           12ms   13:36:31 
+╰─ $
+
+
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                           17ms   13:50:27 
+╰─ $ ps -ef | grep "amazon"
+pran779    27912     397  0 13:50 pts/0    00:00:00 grep --color=auto amazon
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                           38ms   13:50:34 
+╰─ $ ps -ef | grep amazon | awk -F" " '{print $2}'
+29499
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                           28ms   13:57:10 
+╰─ $
+
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                           28ms   13:57:10 
+╰─ $ ps -ef | grep amazon | awk -F" " '{print $1}'
+pran779
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                           14ms   13:58:32 
+╰─ $
+
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                        11.723s   15:13:20 
+╰─ $ ./nodeHealth.sh
+./nodeHealth.sh: line 1: ???: command not found
+++ set -e
+++ set -o pipefail
+++ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+none            3.4G     0  3.4G   0% /usr/lib/modules/5.15.167.4-microsoft-standard-WSL2
+none            3.4G  4.0K  3.4G   1% /mnt/wsl
+drivers         931G  196G  736G  21% /usr/lib/wsl/drivers
+snapfuse        132M  132M     0 100% /snap/ubuntu-desktop-installer/1276
+.
+.
+.
+.
+.
+snapfuse         56M   56M     0 100% /snap/aws-cli/1178
+++ free -g
+               total        used        free      shared  buff/cache   available
+Mem:               6           0           5           0           0           5
+Swap:              2           0           2
+++ nproc
+12
+++ ps -ef
+++ grep amazon
+++ awk '-F ' '{print $2}'
+48243
+
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                          11ms   16:13:12 
+╰─ $ # trap command - is very tricky
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                           0ms   16:15:55 
+╰─ $ man trap | echo $(man trap)
+No manual entry for trap
+
+No manual entry for trap
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                         566ms   16:16:39 
+╰─ $
+
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                          11ms   16:42:58 
+╰─ $ history
+    1  sudo apt update
+    2  exit
+    3  vi my.ini
+    4  ls
+    5  sudo vi "my.ini"
+    6  sudo apt update
+    7  sudo apt install nano
+    8  sudo apt install vim
+    9  vi my.ini
+   10  exit
+   11  aws --version
+   12  exit
+   13  sudo apt update
+   14  wsl-u root
+   15  wsl -u root
+   16  sudo su
+   17  exit
+   18  ubuntu --version
+   19  lsb_release -a
+   20  sudo apt update
+   21  lsb_release -a
+   22  clear
+   23  lsb_release -a
+   24  wsl -l -v
+   25  history
+   26  pwd
+   27  curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/bin
+   28  pwd
+   29  whereis /home/pran779
+   30  explorer.exe .
+   31  curl -s https://ohmyposh.dev/install.sh | bash -s
+   32  curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/bin
+   33  sudo curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/bin
+   34  sudo apt install unzip
+   35  curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/bin
+   36  whereis /etc/
+   37  whereis /etc
+   38  whereis /mnt/
+   39  whereis /mnt
+   40  whereis ~
+   41  where is /etc/wsl.conf
+   42  whereis /etc/wsl.conf
+   43  cd ~
+   44  cat /etc/wsl.conf
+   45  explorer.exe .
+   46  cd /mnt/c/Users/pranj
+   47  explorer.exe .
+   48  pwd
+   49  echo $HOME
+   50  pwd
+   51  exit
+   52  curl -s https://ohmyposh.dev/install.sh | bash -s
+   53  oh-my-posh get shell
+   54  echo $0
+   55  echo $SHELL
+   56  oh-my-posh get shell
+   57  curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/bin
+   58  mkdir ~/bin
+   59  curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/bin
+   60  oh-my-posh get shell
+   61  nano ~/.bashrc
+   62  source ~/.bashrc
+   63  oh-my-posh get shell
+   64  ls
+   65  cd bin
+   66  ls
+   67  cd ..
+   68  cd /
+   69  ls
+   70  explorer.exe .
+   71  vim ~/.bashrc
+   72  exec bash
+   73  clear
+   74  vim ~/.bashrc
+   75  exec bash
+   76  vim ~/.bashrc
+   77  exec bash
+   78  vim ~/.bashrc
+   79  exec bash
+   80  vim ~/.bashrc
+   81  exec bash
+   82  vim ~/.bashrc
+   83  exec bash
+   84  vim ~/.bashrc
+   85  exec bash
+   86  clear
+   87  exit
+   88  clear
+   89  explorer.exe .
+   90  nano ~/.bashrc
+   91  whereis  bashrc
+   92  whereis  ~/.bashrc
+   93  ls
+   94  cd bin/
+   95  ls
+   96  cd ..
+   97  ls
+   98  cd pran779/
+   99  ls
+  100  clear
+  101  ls
+  102  pwd ls
+  103  pwd
+  104  find bashrc
+  105  cat \home\pran779\.bashrc"
+  106  cat \home\pran779\.bashrc
+  107  cat /home/pran779/.bashrc
+  108  pwd
+  109  whereis oh-my-posh
+  110  cd C:\Users\pranj\github_bin
+  111  whereis C:\Users\pranj\github_bin
+  112  cd "C:\Users\pranj\github_bin"
+  113  whereis C:
+  114  whereis pranj
+  115  '/mnt/c/Users/pranj/github_bin'
+  116  cd '/mnt/c/Users/pranj/github_bin'
+  117  ls
+  118  echo 'export PATH=$PATH:/c/Users/pranj/github_bin/' >> ~/.bashrc
+  119  echo 'export PATH=$PATH:/c/Users/pranj/github_bin/' >> .bashrc
+  120  aws
+  121  snap info aws-cli
+  122  snap install aws-cli --classic
+  123  sudo snap install aws-cli --classic
+  124  aws --version
+  125  clear
+  126  git config list
+  127  sudo apt update
+  128  clear
+  129  sudo info git
+  130  git -v
+  131  git --v
+  132  git --V
+  133  git --version
+  134  clear
+  135  aws config list
+  136  clear
+  137  aws configure list
+  138  aws configure
+  139  clear
+  140  cd '/mnt/c/Users/pranj/Desktop/my code/Abishek Veeramella'
+  141  vim first-shell-script.sh
+  142  clear
+  143  vim first-shell-script.sh
+  144  cat first-shell-script.sh
+  145  clear
+  146  vim secondfile.sh
+  147  clear
+  148  cat first-shell-script.sh
+  149  clear
+  150  sh first-shell-script.sh
+  151  clear
+  152  mkdir myfirstfolder
+  153  ls -ltr
+  154  chmod 744 secondfile.sh
+  155  chmod 700 first-shell-script.sh
+  156  chmod 722 first-shell-script.sh
+  157  chmod 746 first-shell-script.sh
+  158  cd myfirstfolder/
+  159  vim sampleshfile.sh
+  160  chmod 777 sampleshfile.sh
+  161  ./sampleshfile.sh
+  162  ls
+  163  cd testshfolder/
+  164  ls
+  165  top
+  166  history
+  167  clear
+  168  cd '/mnt/c/Users/pranj/Desktop/my code/Abishek Veeramella'
+  169  vim nodeHealth.sh
+  170  vim grantsPermission.sh
+  171  ./grantsPermission.sh
+  172  clear
+  173  vim nodeHealth.sh
+  174  ./grantsPermission.sh
+  175  clear
+  176  vim nodeHealth.sh
+  177  ./nodeHealth.sh
+  178  vim nodeHealth.sh
+  179  ./nodeHealth.sh
+  180  cat nodeHealth.sh
+  181  cat grantsPermission.sh
+  182  clear
+  183  ps
+  184  clear
+  185  ps -ef
+  186  clear
+  187  ps -ef | grep "amazon"
+  188  ls
+  189  vim test.sh
+  190  cat test.sh
+  191  clear
+  192  # chmod 77 test.sh
+  193  ./test.sh
+  194  ./test.sh | grep 1
+  195  clear
+  196  ps -ef | grep "amazon"
+  197  date
+  198  date | echo "this"
+  199  clear
+  200  ps -ef | grep "amazon"
+  201  ps -ef | grep amazon | awk -F" " '{print $2}'
+  202  ps -ef | grep amazon | awk -F" " '{print $1}'
+  203  clear
+  204  ls
+  205  vim nodeHealth.sh
+  206  ls -la
+  207  ls -a
+  208  vim .nodeHealth.sh.swp
+  209  cat nodeHealth02.sh
+  210  ls
+  211  ls -la
+  212  ls -a
+  213  vim nodeHealth.sh
+  214  cat nodeHealth.sh
+  215  cleaR
+  216  clear
+  217  ./nodeHealth.sh
+  218  vim nodeHealth.sh
+  219  ./nodeHealth.sh
+  220  vim nodeHealth.sh
+  221  clear
+  222  # cat logfile | grep error
+  223  echo cat logfile | grep error
+  224  echo 'cat logfile | grep error'
+  225  # curl <url of the logfile>
+  226  history
+  227  clear
+  228  # its request module in python
+  229  # curl <url of the log> | grep ERROR
+  230  man curl
+  231  # example \ curl -X GET api.foo.com
+  232  # example / curl -X GET api.foo.com
+  233  # wget
+  234  # wget will download the example log file
+  235  # wget <log file url>
+  236  # find command
+  237  vi ifelse.sh
+  238  vim forloops.sh
+  239  clear
+  240  # trap command - is very tricky
+  241  man trap | echo $(man trap)
+  242  # check out the signals in linux
+  243  yes
+  244  clear
+  245  history
+
+╭─   pran779  mnt  …  Desktop  my code  Abishek Veeramella                                              9ms   16:43:37 
+╰─ $

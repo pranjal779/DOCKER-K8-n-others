@@ -1,0 +1,49 @@
+╭─   pran779  mnt  …  Abishek Veeramella  myfirstfolder  testshfolder         0ms   20:42:55 
+╰─ $ history
+  120  aws
+  121  snap info aws-cli
+  122  snap install aws-cli --classic
+  123  sudo snap install aws-cli --classic
+  124  aws --version
+  125  clear
+  126  git config list
+  127  sudo apt update
+  128  clear
+  129  sudo info git
+  130  git -v
+  131  git --v
+  132  git --V
+  133  git --version
+  134  clear
+  135  aws config list
+  136  clear
+  137  aws configure list
+  138  aws configure
+  139  clear
+  140  cd '/mnt/c/Users/pranj/Desktop/my code/Abishek Veeramella'
+  141  vim first-shell-script.sh
+  142  clear
+  143  vim first-shell-script.sh
+  144  cat first-shell-script.sh
+  145  clear
+  146  vim secondfile.sh
+  147  clear
+  148  cat first-shell-script.sh
+  149  clear
+  150  sh first-shell-script.sh
+  151  clear
+  152  mkdir myfirstfolder
+  153  ls -ltr
+  154  chmod 744 secondfile.sh
+  155  chmod 700 first-shell-script.sh
+  156  chmod 722 first-shell-script.sh
+  157  chmod 746 first-shell-script.sh
+  158  cd myfirstfolder/
+  159  vim sampleshfile.sh
+  160  chmod 777 sampleshfile.sh
+  161  ./sampleshfile.sh
+  162  ls
+  163  cd testshfolder/
+  164  ls
+  165  top
+  166  history

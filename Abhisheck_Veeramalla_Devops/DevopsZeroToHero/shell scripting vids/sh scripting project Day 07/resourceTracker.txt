@@ -1,0 +1,17 @@
+Print List of s3 buckets: 
+Print List of ec2 instances: 
+"i-09c1dae4f1275f3c4"
+Print List of lambda functions: 
+Print List of iam-users: 
+{
+    "Users": [
+        {
+            "Path": "/",
+            "UserName": "<USerName>",
+            "UserId": "ZGSFCxhvuyg9803[ubvnsdfv",
+            "Arn": "arn:aws:iam::<idNumbeer??>:user/<USerName>",
+            "CreateDate": "2025-01-17T15:25:03+00:00",
+            "PasswordLastUsed": "2025-01-26T13:25:14+00:00"
+        }
+    ]
+}

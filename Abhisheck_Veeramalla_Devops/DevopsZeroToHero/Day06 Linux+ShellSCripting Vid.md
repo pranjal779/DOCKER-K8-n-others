@@ -10,3 +10,7 @@
 
 ## Part 2
 ![Shell Scripting 02](https://github.com/user-attachments/assets/6bffb33e-b0b6-4394-8940-75bf139c39ad)
+
+
+## Part 3
+![sh scripting interview question](https://github.com/user-attachments/assets/62768295-a5d5-4bac-afae-815fd10d3af1)

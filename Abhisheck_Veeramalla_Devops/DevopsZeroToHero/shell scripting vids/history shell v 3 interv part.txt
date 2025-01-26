@@ -1,0 +1,22 @@
+╭─   pran779  ~  shellscripting 
+                  9ms   14:45:20 
+╰─ $ vim print_No_Of_a_char_in_a_string.sh
+
+╭─   pran779  ~  shellscripting 
+           3m 16.573s   14:51:37 
+╰─ $ ./print_No_Of_a_char_in_a_string.sh
+-bash: ./print_No_Of_a_char_in_a_string.sh: Permission denied
+
+╭─   pran779  ~  shellscripting 
+                 10ms   14:51:52 
+╰─ $ chmod 777 print_No_Of_a_char_in_a_string.sh
+
+╭─   pran779  ~  shellscripting 
+                 18ms   14:52:12 
+╰─ $ ./print_No_Of_a_char_in_a_string.sh
+4
+
+╭─   pran779  ~  shellscripting 
+                 21ms   14:52:15 
+╰─ $
+

@@ -1,0 +1,14 @@
+Here is how to integrate the modified script with a cron job :: 
+1. Open the crontab configuration by running:
+crontab -e
+2. Add the following line to the crontab file:
+0 20 * * * /path to your script.sh 
+(Replace /path to script.sh with the actual path of your script)
+The cron job entry 0 20 * * * specifies that the script will run at 20:00 (8:00 PM) every day.
+3. Save and exit the crontab editor.
+
+#24:14 
+aws ec2 describe-instances --query  'Reservations[*].Instances[*].[InstanceId,InstanceType,State.Name,PublicIpAddress,PrivateIpAddress]' --output table
+#output will be more clear
+
+https://youtu.be/gx5E47R9fGk?si=aS0G_ckpmDes09Fg

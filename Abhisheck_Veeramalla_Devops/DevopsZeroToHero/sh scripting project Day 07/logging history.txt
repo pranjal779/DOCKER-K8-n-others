@@ -1,0 +1,81 @@
+╭─   pran779  ~                                                                                                                16.705s   20:30:58 
+╰─ $ aws ec2 describe-instances | jq # jq = json parser && yq = yaml/yml parser
+Command 'jq' not found, but can be installed with:
+sudo snap install jq  # version 1.5+dfsg-1, or
+sudo apt  install jq  # version 1.6-2.1ubuntu3
+See 'snap info jq' for additional versions.
+
+╭─   pran779  ~                                                                                                                 4.566s   20:33:01 
+╰─ $ aws ec2 describe-instances | jq '.Reservations[].Instances[].InstanceId' # jq = json parser && yq = yaml/yml parser
+Command 'jq' not found, but can be installed with:
+sudo snap install jq  # version 1.5+dfsg-1, or
+sudo apt  install jq  # version 1.6-2.1ubuntu3
+See 'snap info jq' for additional versions.
+
+╭─   pran779  ~                                                                                                                 4.635s   20:38:39 
+╰─ $ sudo snap install jq
+[sudo] password for pran779:
+jq 1.5+dfsg-1 from Michael Vogt (mvo✪) installed
+
+╭─   pran779  ~                                                                                                                43.433s   20:39:49 
+╰─ $ aws ec2 describe-instances | jq '.Reservations[].Instances[].InstanceId' # jq = json parser && yq = yaml/yml parser
+"i-09c1dae4f1275f3c4"
+
+╭─   pran779  ~                                                                                                                 4.216s   20:39:59 
+╰─ $
+
+╭─   pran779  ~                                                                                                              2m 5.593s   20:44:32 
+╰─ $ vim aws_resourcee_tracker.sh
+
+╭─   pran779  ~                                                                                                                57.177s   20:45:48 
+╰─ $ ./aws_resourcee_tracker.sh
++ echo 'Print List of s3 buckets: '
+Print List of s3 buckets:
++ aws s3 ls
++ echo 'Print List of ec2 instances: '
+Print List of ec2 instances:
++ aws ec2 describe-instances
++ jq '.Reservations[].Instances[].InstanceId'
+"i-09c1dae4f1275f3c4"
++ echo 'Print List of lambda functions: '
+Print List of lambda functions:
++ aws lambda list-functions
+{
+    "Functions": []
+}
++ echo 'Print List of iam-users: '
+Print List of iam-users:
++ aws iam list-users
+{
+    "Users": [
+        {
+            "Path": "/",
+            "UserName": "<USerName>",
+            "UserId": "ZGSFCxhvuyg9803[ubvnsdfv",
+            "Arn": "arn:aws:iam::<idNumbeer??>:user/<USerName>",
+            "CreateDate": "2025-01-17T15:25:03+00:00",
+            "PasswordLastUsed": "2025-01-26T13:25:14+00:00"
+        }
+    ]
+}
+
+╭─   pran779  ~                                                                                                                12.303s   20:46:13 
+╰─ $
+
+╭─   pran779  ~                                                                                                                10.522s   20:53:42 
+╰─ $ ./aws_resourcee_tracker.sh > resourceTracker
++ echo 'Print List of s3 buckets: '
++ aws s3 ls
++ echo 'Print List of ec2 instances: '
++ aws ec2 describe-instances
++ jq '.Reservations[].Instances[].InstanceId'
++ echo 'Print List of lambda functions: '
++ aws lambda list-functions
++ echo 'Print List of iam-users: '
++ aws iam list-users
+
+╭─   pran779  ~                                                                                                                12.484s   20:54:23 
+╰─ $ # did not work
+
+╭─   pran779  ~                                                                                                                    0ms   20:55:32 
+╰─ $

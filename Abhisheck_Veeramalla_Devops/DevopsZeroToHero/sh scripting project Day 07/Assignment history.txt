@@ -1,0 +1,101 @@
+[ec2-user@ip-172-31-15-69 ~]$ ./cornJobReport.sh
++ echo 'Print List of s3 buckets: '
+Print List of s3 buckets:
++ aws s3 ls
++ echo 'Print List of ec2 instances: '
+Print List of ec2 instances:
++ jq '.Reservations[].Instances[].InstanceId'
++ aws ec2 describe-instances
+"i-0bef9000851949460"
++ echo 'Print List of lambda functions: '
+Print List of lambda functions:
++ aws lambda list-functions
+{
+    "Functions": []
+}
++ echo 'Print List of iam-users: '
+Print List of iam-users:
++ aws iam list-users
+{
+    "Users": [
+        {
+            "Path": "/",
+            "UserName": "afw3q452",
+            "UserId": "adfsssss",
+            "Arn": "arn:aws:iam::..........:user/..........",
+            "CreateDate": "2025-01-17T15:25:03+00:00",
+            "PasswordLastUsed": "2025-01-27T12:01:56+00:00"
+        }
+    ]
+}
++ aws iam list-account-aliases --output table
+--------------------
+|ListAccountAliases|
++------------------+
+[ec2-user@ip-172-31-15-69 ~]$ ./cornJobReport.sh > cornJobReport.json
++ echo 'Print List of s3 buckets: '
++ aws s3 ls
++ echo 'Print List of ec2 instances: '
++ jq '.Reservations[].Instances[].InstanceId'
++ aws ec2 describe-instances
++ echo 'Print List of lambda functions: '
++ aws lambda list-functions
++ echo 'Print List of iam-users: '
++ aws iam list-users
++ aws iam list-account-aliases --output table
+[ec2-user@ip-172-31-15-69 ~]$ ls
+cornJobReport.json  cornJobReport.sh
+[ec2-user@ip-172-31-15-69 ~]$ cat cornJobReport.json
+Print List of s3 buckets:
+Print List of ec2 instances:
+"i-0bef9000851949460"
+Print List of lambda functions:
+{
+    "Functions": []
+}
+Print List of iam-users:
+{
+    "Users": [
+        {
+            "Path": "/",
+            "UserName": "/..........",
+            "UserId": "........",
+            "Arn": "arn:aws:iam::..........:user/.....",
+            "CreateDate": "2025-01-17T15:25:03+00:00",
+            "PasswordLastUsed": "2025-01-27T12:01:56+00:00"
+        }
+    ]
+}
+--------------------
+|ListAccountAliases|
++------------------+
+[ec2-user@ip-172-31-15-69 ~]$ scp client_loop: send disconnect: Connection reset
+ pranj    ~   15m 46.84s⠀   ssh -i "C:\Users\......\pemKey.pem" ec2-user@<ip> 
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Mon Jan 27 13:09:29 2025 from 49.43.42.232
+[ec2-user@ip-172-31-15-69 ~]$ ls
+cornJobReport.json  cornJobReport.sh
+[ec2-user@ip-172-31-15-69 ~]$
+
+
+# Downloaded file from another terminal
+ pranj    ~   2.78s⠀   scp -i "C:\Users\........\pemKey.pem" ec2-user@<ip>:cornJobReport.json "C:\.....\folder"
+cornJobReport.json                                                                    100%  571     9.1KB/s   00:00
+ pranj    ~   874ms⠀   
+
+ pranj    ~   738ms⠀   scp -i "C:\Users\pranj\Desktop\AWS stuff\pemKey.pem" ec2-user@52.66.245.154:cornJobReport.sh "C:\Users\pranj\Downloads"
+cornJobReport.sh                                                                      100% 1124    15.7KB/s   00:00
+ pranj    ~   894ms⠀     
+
+
+
+ mail -s "Corn Job Report" yyav@gmail.com < cornJobReeportTest.txt

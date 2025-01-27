@@ -1,0 +1,46 @@
+Print List of s3 buckets: 
+Print List of ec2 instances: 
+"i-0bef9000851949460"
+Print List of lambda functions: 
+{
+    "Functions": []
+}
+Print List of iam-users: 
+{
+    "Users": [
+        {
+            "Path": "/",
+            "UserName": "af235q3gcv",
+            "UserId": "asdf346tdsgfvs",
+            "Arn": "arn:aws:iam::agw3eqr3tq:user/asdaaaaaaaa",
+            "CreateDate": "2025-01-17T15:25:03+00:00",
+            "PasswordLastUsed": "2025-01-27T12:01:56+00:00"
+        }
+    ]
+}
+--------------------
+|ListAccountAliases|
++------------------+
+
+
+
+[ec2-user@ip-172-31-15-69 ~]$ ls
+cornJobReport.json  cornJobReport.sh
+[ec2-user@ip-172-31-15-69 ~]$ ./cornJobReport.sh > cornJobReportTest.txt
++ echo 'Print List of s3 buckets: '
++ aws s3 ls
++ echo 'Print List of ec2 instances: '
++ jq '.Reservations[].Instances[].InstanceId'
++ aws ec2 describe-instances
++ echo 'Print List of lambda functions: '
++ aws lambda list-functions
++ echo 'Print List of iam-users: '
++ aws iam list-users
++ aws iam list-account-aliases --output table
+[ec2-user@ip-172-31-15-69 ~]$ ls
+cornJobReport.json  cornJobReport.sh  cornJobReportTest.txt
+
+
+ pranj    sh scripting project Day 07   795ms⠀   scp -i "C:\Users\.........AWS stuff\pemKey.pem" ec2-user@<ip>:cornJobReportTest.txt "C:\Users\pranj\Downloads"
+cornJobReportTest.txt                                                                 100%  571     8.9KB/s   00:00
+ pranj    sh scripting project Day 07   784ms⠀      

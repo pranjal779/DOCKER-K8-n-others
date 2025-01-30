@@ -1,0 +1,318 @@
+ubuntu@ip:~/ansible$ ssh ip02
+The authenticity of host 'ip02 (ip02)' can't be established.
+keys key fingerprint is SHA----------------------KAOAmTj99999999999KhE.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '<ip>' (keys) to the list of known hosts.
+ubuntu@<ip>: Permission denied (publickey).
+ubuntu@ip:~/ansible$
+
+ubuntu@ip:~/ansible$ ssh-keygen
+Generating public/private keys key pair.
+Enter file in which to save the key (/home/ubuntu/.ssh/id_keys):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/ubuntu/.ssh/id_keys
+Your public key has been saved in /home/ubuntu/.ssh/id_keys.pub
+The key fingerprint is:
+----------------------KPfdWBbkast14/BL23U ubuntu@ip
+The key's randomart image is:
++--[keysafs2]--+
+|     +o=asdf+        |
+|    . oasdf+o        |
+|   .   wwwwwwwdsad   |
+|sdfa+wwasfo=  sdfg   |
+|+@fdaswdS*+          |
+|    .o**+Bo.         |
+|     .		 E    |
+|   asdfasdf 	    . |
+|    	       o .    |
++----[3425345]--------+
+ubuntu@ip:~/ansible$
+
+ubuntu@ip:~$ ls /home/ubuntu/.ssh
+authorized_keys  id_keys  id_keys.pub  known_hosts
+ubuntu@ip:~$
+
+ubuntu@ip:~$ cat /home/ubuntu/.ssh/id_keys.pub
+ssh-keys AAAAC3NzaC1lZDI1NTE5AAAAIEdZsW7tXjY/SQ9HpVH2RKyzg9dT02SyNouvLNvXOId+ ubuntu@ip
+ubuntu@ip:~$
+
+ubuntu@ip:~$ cd ansible/
+ubuntu@ip:~/ansible$ vim inventory
+ubuntu@ip:~/ansible$ ansible -i inventory all -m "shell" -a "touch devopsclass"
+ip02 | CHANGED | rc=0 >>
+
+ubuntu@ip:~/ansible$
+
+# Ubuntu Server:
+
+ubuntu@ip-ipps01:~$ ls -ltr
+total 0
+-rw-rw-r-- 1 ubuntu ubuntu 0 Jan 30 18:24 devopsclass
+ubuntu@ip-ipps01:~$
+
+# ansible server
+ubuntu@ip:~/ansible$ ls -ltr & du -sh
+[1] 2567
+total 4
+-rw-rw-r-- 1 ubuntu ubuntu 13 Jan 30 18:20 inventory
+8.0K    .
+[1]+  Done                    ls --color=auto -ltr
+ubuntu@ip:~/ansible$
+
+ubuntu@ip:~/ansible$ ansible -i inventory all -m "shell" -a "nproc"
+ip02 | CHANGED | rc=0 >>
+1
+ubuntu@ip:~/ansible$ ansible -i inventory all -m "shell" -a "df"
+ip02 | CHANGED | rc=0 >>
+Filesystem     1K-blocks    Used Available Use% Mounted on
+/dev/root        7034376 1777672   5240320  26% /
+tmpfs             490196       0    490196   0% /dev/shm
+tmpfs             196080     892    195188   1% /run
+tmpfs               5120       0      5120   0% /run/lock
+/dev/xvda16       901520   77044    761348  10% /boot
+/dev/xvda15       106832    6246    100586   6% /boot/efi
+tmpfs              98036      12     98024   1% /run/user/1000
+ubuntu@ip:~/ansible$
+
+ubuntu@ip:~/ansible$ vim inventory
+ubuntu@ip:~/ansible$ ansible -i inventory webserver -m "shell" -a "df"
+[WARNING]: Could not match supplied host pattern, ignoring: webserver
+[WARNING]: No hosts matched, nothing to do
+ubuntu@ip:~/ansible$ vim inventory
+ubuntu@ip:~/ansible$ ubuntu@ip:~/ansible$ ansible -i inventory webservers -m "shell" -a "df"
+ip02 | CHANGED | rc=0 >>
+Filesystem     1K-blocks    Used Available Use% Mounted on
+/dev/root        7034376 1777688   5240304  26% /
+tmpfs             490196       0    490196   0% /dev/shm
+tmpfs             196080     892    195188   1% /run
+tmpfs               5120       0      5120   0% /run/lock
+/dev/xvda16       901520   77044    761348  10% /boot
+/dev/xvda15       106832    6246    100586   6% /boot/efi
+tmpfs              98036      12     98024   1% /run/user/1000
+ubuntu@ip:~/ansible$
+ubuntu@ip:~/ansible$ cat inventory
+[webservers]
+ip02
+
+
+[dbservers]
+17.31.62.22
+ubuntu@ip:~/ansible$
+
+ubuntu@ip:~/ansible$ cat first-playbook.yaml
+---
+- name: Install and start nginx
+  hosts: webservers
+  become: root
+
+  tasks:
+    - name: Install nginx
+      # shell: apt install nginx
+      # or
+      apt:
+        name: nginx
+        state: present
+      # apt is the packege manager thats why use apt ansible yaml file but you can use shell as well
+      # and to keep it more generic
+    - name: Start nginx
+      # shell: systemctl start nginx
+      # or
+      # ansible provides a service module called "service"
+      service:
+        name: nginx
+        state: started
+ubuntu@ip:~/ansible$ ls
+first-playbook.yaml  inventory
+ubuntu@ip:~/ansible$ ls -a
+.  ..  first-playbook.yaml  inventory
+ubuntu@ip:~/ansible$ ansible-playbook -i inventory first-playbook.yaml
+
+PLAY [Install and start nginx] *****************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************
+fatal: [ip02]: FAILED! => {"msg": "the field 'become' has an invalid value (root), and could not be converted to an bool.The error was: The value 'root' is not a valid boolean.  Valid booleans include: 0, 1, 'off', 'y', 'n', 'f', 'yes', 'true', '0', 't', '1', 'on', 'false', 'no'. The value 'root' is not a valid boolean.  Valid booleans include: 0, 1, 'off', 'y', 'n', 'f', 'yes', 'true', '0', 't', '1', 'on', 'false', 'no'"}
+
+PLAY RECAP *************************************************************************************************************
+ip02               : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
+
+ubuntu@ip:~/ansible$ vim inventory
+ubuntu@ip:~/ansible$ vim first-playbook.yaml
+ubuntu@ip:~/ansible$ ansible-playbook -i inventory first-playbook.yaml
+
+PLAY [Install and start nginx] *****************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************
+fatal: [ip02]: FAILED! => {"msg": "the field 'become' has an invalid value (root), and could not be converted to an bool.The error was: The value 'root' is not a valid boolean.  Valid booleans include: 0, 1, 'no', '1', '0', 'y', 'false', 'on', 'f', 't', 'n', 'yes', 'true', 'off'. The value 'root' is not a valid boolean.  Valid booleans include: 0, 1, 'no', '1', '0', 'y', 'false', 'on', 'f', 't', 'n', 'yes', 'true', 'off'"}
+
+PLAY RECAP *************************************************************************************************************
+ip02               : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
+
+ubuntu@ip:~/ansible$ vim first-playbook.yaml
+ubuntu@ip:~/ansible$ ansible-playbook -i inventory first-playbook.yaml
+
+PLAY [Install and start nginx] *****************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************
+ok: [ip02]
+
+TASK [Install nginx] ***************************************************************************************************
+changed: [ip02]
+
+TASK [Start nginx] *****************************************************************************************************
+ok: [ip02]
+
+PLAY RECAP *************************************************************************************************************
+ip02               : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+ubuntu@ip:~/ansible$ cat first-playbook.yaml
+---
+- name: Install and start nginx
+  hosts: [webservers]
+    # become: root -> this is apparenlty invalid now
+  become: true
+
+  tasks:
+    - name: Install nginx
+      # shell: apt install nginx
+      # or
+      apt:
+        name: nginx
+        state: present
+      # apt is the packege manager thats why use apt ansible yaml file but you can use shell as well
+      # and to keep it more generic
+    - name: Start nginx
+      # shell: systemctl start nginx
+      # or
+      # ansible provides a service module called "service"
+      service:
+        name: nginx
+        state: started
+ubuntu@ip:~/ansible$
+
+
+# To check if ngnix is installed in the ubuntu server
+
+ubuntu@ip-ipps01:~$ sudo systemctl status nginx
+● nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (/usr/lib/systemd/system/nginx.service; enabled; preset: enabled)
+     Active: active (running) since Thu 2025-01-30 19:11:36 UTC; 2min 39s ago
+       Docs: man:nginx(8)
+    Process: 2627 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, stat>
+    Process: 2629 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=0/SUCC>
+   Main PID: 2630 (nginx)
+      Tasks: 2 (limit: 1130)
+     Memory: 1.7M (peak: 2.0M)
+        CPU: 11ms
+     CGroup: /system.slice/nginx.service
+             ├─2630 "nginx: master process /usr/sbin/nginx -g daemon on; master_process on;"
+             └─2631 "nginx: worker process"
+
+Jan 30 19:11:36 ip-ipps01 systemd[1]: Starting nginx.service - A high performance web server and a>
+Jan 30 19:11:36 ip-ipps01 systemd[1]: Started nginx.service - A high performance web server and a >
+lines 1-16/16 (END)
+
+ubuntu@ip:~/ansible$ ansible-playbook -vv -i inventory first-playbook.yaml
+ansible-playbook [core 2.16.3]
+  config file = None
+  configured module search path = ['/home/ubuntu/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  ansible collection location = /home/ubuntu/.ansible/collections:/usr/share/ansible/collections
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.12.3 (main, Nov  6 2024, 18:32:19) [GCC 13.2.0] (/usr/bin/python3)
+  jinja version = 3.1.2
+  libyaml = True
+No config file found; using defaults
+Skipping callback 'default', as we already have a stdout callback.
+Skipping callback 'minimal', as we already have a stdout callback.
+Skipping callback 'oneline', as we already have a stdout callback.
+
+PLAYBOOK: first-playbook.yaml ******************************************************************************************
+1 plays in first-playbook.yaml
+
+PLAY [Install and start nginx] *****************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************
+task path: /home/ubuntu/ansible/first-playbook.yaml:2
+ok: [ip02]
+
+TASK [Install nginx] ***************************************************************************************************
+task path: /home/ubuntu/ansible/first-playbook.yaml:8
+ok: [ip02] => {"cache_update_time": 1736930841, "cache_updated": false, "changed": false}
+
+TASK [Start nginx] *****************************************************************************************************
+task path: /home/ubuntu/ansible/first-playbook.yaml:16
+
+
+
+ubuntu@ip:~/ansible$ ansible-playbook -vvv -i inventory first-playbook.yaml
+ansible-playbook [core 2.16.3]
+  config file = None
+  configured module search path = ['/home/ubuntu/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location =
+.
+.
+.
+.
+.
+.
+
+
+ubuntu@ip:~/ansible$ ls
+first-playbook.yaml  inventory  kubernetes.yaml
+ubuntu@ip:~/ansible$ ls
+first-playbook.yaml  inventory  kubernetes.yaml
+ubuntu@ip:~/ansible$ ls
+first-playbook.yaml  inventory  kubernetes.yaml
+ubuntu@ip:~/ansible$ mkdir kubernets
+ubuntu@ip:~/ansible$ ansible-galaxy role init kubernetes
+- Role kubernetes was created successfully
+ubuntu@ip:~/ansible$ ls
+first-playbook.yaml  inventory  kubernetes  kubernetes.yaml  kubernets
+ubuntu@ip:~/ansible$ cd kubernet
+-bash: cd: kubernet: No such file or directory
+ubuntu@ip:~/ansible$ cd kubernetes/
+ubuntu@ip:~/ansible/kubernetes$ ls
+README.md  defaults  files  handlers  meta  tasks  templates  tests  vars
+ubuntu@ip:~/ansible/kubernetes$ cd ..
+ubuntu@ip:~/ansible$ ls kubernets/
+ubuntu@ip:~/ansible$ ls
+first-playbook.yaml  inventory  kubernetes  kubernetes.yaml  kubernets
+ubuntu@ip:~/ansible$
+
+
+ubuntu@ip:~/ansible$ cd kubernetes/
+ubuntu@ip:~/ansible/kubernetes$ ls
+README.md  defaults  files  handlers  meta  tasks  templates  tests  vars
+ubuntu@ip:~/ansible/kubernetes$ ls
+README.md  defaults  files  handlers  meta  tasks  templates  tests  vars
+ubuntu@ip:~/ansible/kubernetes$ ls -ltr
+total 36
+drwxrwxr-x 2 ubuntu ubuntu 4096 Jan 30 19:35 templates
+drwxrwxr-x 2 ubuntu ubuntu 4096 Jan 30 19:35 files
+-rw-rw-r-- 1 ubuntu ubuntu 1328 Jan 30 19:35 README.md
+drwxrwxr-x 2 ubuntu ubuntu 4096 Jan 30 19:35 tasks
+drwxrwxr-x 2 ubuntu ubuntu 4096 Jan 30 19:35 tests
+drwxrwxr-x 2 ubuntu ubuntu 4096 Jan 30 19:35 defaults
+drwxrwxr-x 2 ubuntu ubuntu 4096 Jan 30 19:35 handlers
+drwxrwxr-x 2 ubuntu ubuntu 4096 Jan 30 19:35 meta
+drwxrwxr-x 2 ubuntu ubuntu 4096 Jan 30 19:35 vars
+ubuntu@ip:~/ansible/kubernetes$
+
+
+ubuntu@ip:~/ansible/kubernetes$ cd meta/
+ubuntu@ip:~/ansible/kubernetes/meta$ ls
+main.yml
+ubuntu@ip:~/ansible/kubernetes/meta$ vim main.yml
+ubuntu@ip:~/ansible/kubernetes/meta$ cd ..
+ubuntu@ip:~/ansible/kubernetes$ ls
+README.md  defaults  files  handlers  meta  tasks  templates  tests  vars
+ubuntu@ip:~/ansible/kubernetes$ cd defaults/
+ubuntu@ip:~/ansible/kubernetes/defaults$ ls
+main.yml
+ubuntu@ip:~/ansible/kubernetes/defaults$ cd ..
+ubuntu@ip:~/ansible/kubernetes$ ls handlers/
+main.yml
+ubuntu@ip:~/ansible/kubernetes$
+

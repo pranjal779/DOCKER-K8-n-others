@@ -1,0 +1,25 @@
+---
+- name: Install and start nginx
+  hosts: [webservers]
+  # become: root -> this is apparently invalid now
+  become: true
+
+  tasks:
+    - name: Install nginx
+    # shell: apt install nginx
+    # or
+    apt:
+      name: nginx
+      state: present
+      # apt is the package manager thats why we use apt in ansible yaml file
+      # but you can use shell as well any is fine
+      # but apt is used it keep it more generic
+    
+    - name: Start nginx
+    # shell: systemctl start nginx
+    # or
+    # ansible provides a service module called "service"
+    # service:
+      name: nginx
+      state: started
+

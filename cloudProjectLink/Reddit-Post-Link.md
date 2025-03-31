@@ -1,0 +1,1 @@
+[This should be your first cloud project (tutorial included!)](https://www.reddit.com/r/AWSCertifications/comments/1jn6lwl/this_should_be_your_first_cloud_project_tutorial/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)

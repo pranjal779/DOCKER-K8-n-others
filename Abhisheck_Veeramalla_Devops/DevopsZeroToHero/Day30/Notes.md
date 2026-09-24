@@ -18,3 +18,42 @@
 <img width="2486" height="1147" alt="image" src="https://github.com/user-attachments/assets/0bbc78f9-2c51-4f1c-903a-9c519cdb64a2" />
 
 **7:26**
+<img width="2496" height="1166" alt="image" src="https://github.com/user-attachments/assets/0dc49e00-b555-4ddd-b170-a1d56cb3f985" />
+<img width="2502" height="1161" alt="image" src="https://github.com/user-attachments/assets/1ccce206-47d3-4d37-81ea-75a68691f3fc" />
+<img width="2515" height="1157" alt="image" src="https://github.com/user-attachments/assets/92e5bf07-482e-4a72-93e1-e48de5b1e030" />
+<img width="742" height="982" alt="image" src="https://github.com/user-attachments/assets/0d8bc69b-845c-4618-a622-621fe169de1b" />
+<img width="2526" height="1117" alt="image" src="https://github.com/user-attachments/assets/c1c06ff3-2bc9-4fa4-8bf3-f805393f16fb" />
+
+**9:11** Problem number 2 - Auto healing is not present in single host container platform that is Docker:
+
+<img width="2515" height="1166" alt="image" src="https://github.com/user-attachments/assets/98d75f55-3302-4665-b55c-1f1599c1b98d" />
+<img width="2511" height="1126" alt="image" src="https://github.com/user-attachments/assets/3c2c9aad-4d09-4a25-8c6e-d0b9088bc709" />
+<img width="2487" height="1157" alt="image" src="https://github.com/user-attachments/assets/b66689df-96ac-4c7a-915c-c5f661c1aa28" />
+<img width="2502" height="1361" alt="image" src="https://github.com/user-attachments/assets/961efd15-b5b8-4009-a247-514273aa3910" />
+<img width="2535" height="1361" alt="image" src="https://github.com/user-attachments/assets/52c172fc-945c-4bc9-913d-c110f84a7c99" />
+<img width="2521" height="1368" alt="image" src="https://github.com/user-attachments/assets/4da3776d-5530-44de-99b0-8efe12fa8a9f" />
+
+
+**11:15** Problem Number 3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -80,9 +80,47 @@
 
 **24:23** 2 problems sloved
 
+**24:35** Problem 3: **Auto Healing**
+<img width="2492" height="1238" alt="image" src="https://github.com/user-attachments/assets/296aa536-ea85-428a-9bb0-0c3a7f95d85e" />
+<img width="2521" height="1320" alt="image" src="https://github.com/user-attachments/assets/310e6f63-875a-487d-ac1f-7baf7359d327" />
+<img width="2496" height="1360" alt="image" src="https://github.com/user-attachments/assets/01682f63-9e9e-4f60-a941-1e9437f4baef" />
+<img width="2532" height="1230" alt="image" src="https://github.com/user-attachments/assets/991645cd-1ae5-4483-8cbe-971856c98be7" />
+<img width="2517" height="1276" alt="image" src="https://github.com/user-attachments/assets/116a14de-f0f2-4dec-86f9-37b8fc01d500" />
+<img width="2497" height="1141" alt="image" src="https://github.com/user-attachments/assets/8de38ec4-a5e9-4941-b8da-871b38a90a7a" />
+<img width="2505" height="1202" alt="image" src="https://github.com/user-attachments/assets/30ca54ab-26e6-49f4-a685-5f48a40d3869" />
+<img width="2537" height="1251" alt="image" src="https://github.com/user-attachments/assets/bc1d999c-0558-4d9e-b164-03a17779c045" />
+
+**27:02** **Problem 4** **Enterprise Nature**
+<img width="680" height="967" alt="image" src="https://github.com/user-attachments/assets/6e000f05-19b4-410a-afc2-6f7bc8b83b18" />
+<img width="2107" height="1187" alt="image" src="https://github.com/user-attachments/assets/5695dd08-e086-4614-ab40-22ec3802a2cd" />
+<img width="2510" height="1250" alt="image" src="https://github.com/user-attachments/assets/fbe52bc8-b978-43c7-8771-4c25ea30370c" />
+<img width="2485" height="1163" alt="image" src="https://github.com/user-attachments/assets/84275dfc-1f61-4108-a441-81a01318dd76" />
+<img width="2512" height="1237" alt="image" src="https://github.com/user-attachments/assets/0633c89e-8fa4-4189-bfe0-c77370f8f893" />
+
+**DOCKER** is never used in production so you might use Docker spam in production but Docker independently is
+never used in production because it's not a Enterprise level solution so Docker is basically a container platform
+
+<img width="676" height="1053" alt="image" src="https://github.com/user-attachments/assets/eac8a95a-00c7-46bd-83c7-58b249be238a" />
+<img width="2521" height="1236" alt="image" src="https://github.com/user-attachments/assets/77d66d48-2574-4fa4-a213-88cb27977f55" />
+<img width="2512" height="1197" alt="image" src="https://github.com/user-attachments/assets/9348b574-0fd5-4a53-9540-ffea9759ed48" />
+<img width="2498" height="1177" alt="image" src="https://github.com/user-attachments/assets/abccc77b-d510-403b-ac2a-3034a5f7c240" />
+<img width="2518" height="1205" alt="image" src="https://github.com/user-attachments/assets/fb82efe2-101c-427d-923b-aa33ce1efd32" />
+
+**30:44** Does Kubernetes solves all these problems 100% - NO
+
+<img width="2507" height="1186" alt="image" src="https://github.com/user-attachments/assets/4cfe7c01-970c-4bbe-b48d-a4a07fdd525a" />
+<img width="2491" height="1186" alt="image" src="https://github.com/user-attachments/assets/db8fb4cb-6673-40dc-8551-0f9e355b4be7" />
+<img width="2507" height="1197" alt="image" src="https://github.com/user-attachments/assets/3aa575ba-fb78-4d30-bdd8-d0f068ff38de" />
+<img width="2530" height="1256" alt="image" src="https://github.com/user-attachments/assets/617a0140-e828-4e58-86f4-7af168c5da81" />
+<img width="688" height="882" alt="image" src="https://github.com/user-attachments/assets/ba2daf5d-c584-4756-9ccb-b8d1aad2c58e" />
+<img width="2535" height="1220" alt="image" src="https://github.com/user-attachments/assets/d2268ee1-a6f6-4a8e-826f-df5a51c1a55e" />
+<img width="2483" height="1162" alt="image" src="https://github.com/user-attachments/assets/ca90195a-1d64-4476-9e10-74e12d5a1eeb" />
+<img width="2525" height="1197" alt="image" src="https://github.com/user-attachments/assets/a71e3051-12f6-4723-86f5-ab1c1ab7d802" />
 
 
-
+## Summary/End of Video
+<img width="676" height="938" alt="image" src="https://github.com/user-attachments/assets/7f1d703e-c7f1-415c-b008-f60593722056" />
+<img width="2536" height="1261" alt="image" src="https://github.com/user-attachments/assets/4cd696e3-dcef-4c06-a235-b0ae3834e7de" />
 
 
 

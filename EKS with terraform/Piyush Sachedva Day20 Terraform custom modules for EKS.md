@@ -3,6 +3,8 @@
 
 [20/30 - Terraform Custom Modules for EKS - From Zero to Production](https://youtu.be/a_j6Gq-KtxE?si=Hu5nO56dyOsbiXre)
 
+https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest
+
 When creating custom modules for Amazon EKS in Terraform, the primary goal is to abstract the complex, underlying boilerplate resources (VPC, IAM, Node Groups, Add-ons) into a clean, repeatable interface for your organization. [1, 2] 
 Instead of treating the Official terraform-aws-modules/eks as an all-or-nothing tool, you can build a custom "wrapper" module around it or wrap the raw aws_eks_cluster resources directly to enforce your company’s compliance and architecture policies. [1, 3, 4] 
 ## 📂 Recommended Folder Structure
